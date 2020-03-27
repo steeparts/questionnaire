@@ -1,0 +1,6 @@
+mixin input(options)
+  - options = options || {}
+
+  .input
+    input.input__field(autocomplete='off')&attributes(attributes)
+    span.input__placeholder= options.placeholder

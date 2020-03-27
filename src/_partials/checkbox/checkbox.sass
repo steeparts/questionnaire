@@ -1,0 +1,51 @@
+// checkbox styles
+.checkbox
+  &__field
+    display: none
+
+  &__label
+    padding: 0 32px
+    cursor: pointer
+    display: inline-flex
+
+    @include extra-smallscreen
+      padding-right: 0
+
+  &__value
+    display: flex
+    font-size: 16px
+    font-weight: 300
+    line-height: 19px
+    position: relative
+    transition: $transition-duration
+
+    &::before
+      position: absolute
+      content: ''
+      left: -32px
+      width: 20px
+      height: 20px
+      border: 1px solid $accent-color
+      border-radius: 3px
+      transition: $transition-duration
+
+  &__label:hover &__value
+    color: $accent-color
+
+  &__label:hover &__field:not(:checked) + &__value::before
+    background-color: $checkbox-hover-color
+
+  &__field:checked + &__value
+    &::before
+      background-color: $accent-color
+
+    &::after
+      position: absolute
+      content: ''
+      left: -26px
+      top: 2px
+      width: 8px
+      height: 12px
+      border: solid white
+      border-width: 0 2px 2px 0
+      transform: rotate(45deg)

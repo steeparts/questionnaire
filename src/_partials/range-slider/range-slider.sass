@@ -1,0 +1,82 @@
+@import ../../node_modules/rangeslider-pure/dist/range-slider.min
+
+.rangeSlider
+  height: 13px
+  margin-top: 10px
+  background: url(../images/range.svg) no-repeat
+  padding-bottom: 25px
+
+  &__buffer
+    display: none
+
+  &, &__fill
+    border-radius: 0
+    box-shadow: none
+
+  &__fill
+    background: url(../images/range_filled.svg) no-repeat
+
+  &__handle, &__handle:active
+    width: 0
+    height: 0
+    border: 0 none
+
+    &::after
+      position: absolute
+      content: ''
+      left: -11px
+      top: auto
+      bottom: -53px
+      width: 22px
+      height: 25px
+      background: url(../images/grabber.svg) no-repeat
+      border-radius: 0
+
+// range-slider styles
+.range-slider
+  padding-bottom: 25px
+
+  input
+    opacity: 0
+
+  &__steps
+    display: flex
+
+  &__step
+    display: flex
+    align-self: flex-end
+    font-size: 13px
+    font-weight: 300
+    position: relative
+    padding-bottom: 3px
+    word-break: break-word
+
+    &:not(:last-child)
+      padding-right: 20px
+
+    &:last-child
+      justify-content: flex-end
+      text-align: right
+
+    &::before
+      position: absolute
+      content: ''
+      bottom: -20px
+      left: 0
+      height: 17px
+      width: 1px
+      border-left: 1px dotted $range-divider-color
+
+    &:not(:first-child):not(:last-child)::after
+      position: absolute
+      content: ''
+      bottom: -27px
+      left: 0
+      height: 13px
+      width: 1px
+      background: white
+      z-index: 5
+
+    &:last-child::before
+      left: auto
+      right: 1px

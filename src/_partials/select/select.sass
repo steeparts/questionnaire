@@ -1,0 +1,93 @@
+// select styles
+.select
+  display: none
+
+.visual-select
+  width: 320px
+  height: 60px
+  margin: 10px 0
+  position: relative
+  z-index: auto
+
+  @include smallscreen
+    width: 100%
+
+  &, *
+    text-align: center
+    cursor: pointer
+
+  *
+    z-index: 1
+
+  &__current
+    max-width: 320px
+    height: 60px
+    padding: 0 20px
+    display: flex
+    align-items: center
+    justify-content: center
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+    background: none
+    border: 1px solid $dull-color
+    border-radius: 5px
+    font-size: 24px
+    font-weight: 400
+    line-height: 28px
+    color: $placeholder-color
+    user-select: none
+    transition: $transition-duration
+
+    @include smallscreen
+      max-width: 100%
+
+    &::after
+      position: absolute
+      content: ''
+      right: 20px
+      top: calc(50% - 7px)
+      width: 10px
+      height: 10px
+      border: solid $accent-color
+      border-width: 0 2px 2px 0
+      transform: rotate(45deg)
+
+    &:not([data-value="-"])
+      border-color: $accent-color
+      color: $primary-color
+
+  &--open &__current::after
+    content: ''
+    top: calc(50% - 1px)
+    transform: rotate(225deg)
+
+  &__dropdown
+    display: none
+    position: absolute
+    left: 0
+    top: 60px
+    padding: 15px 0
+    width: 100%
+    max-height: 285px
+    overflow: auto
+    background: white
+    border-radius: 5px
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, .2)
+
+  &--open &__dropdown
+    display: block
+
+  &__option
+    font-size: 20px
+    font-weight: 300
+    line-height: 23px
+    color: $accent-color
+    padding: 7px 0
+    transition: $transition-duration
+
+    &:hover
+      color: $primary-color
+
+    &--disabled
+      display: none

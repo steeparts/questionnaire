@@ -1,0 +1,102 @@
+// questionnaire styles
+.questionnaire
+  overflow: hidden
+
+  &__header
+    height: 180px
+    display: flex
+    align-items: flex-end
+    justify-content: center
+    background-image: url(../images/bg.jpg)
+    background-repeat: no-repeat
+    background-size: cover
+    background-attachment: fixed
+    position: relative
+
+    &::after
+      position: absolute
+      content: ''
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+      background: linear-gradient(180deg, transparent 0%, white 100%)
+
+  &__title
+    font-size: 67px
+    font-weight: 100
+    line-height: 50px
+    width: 100%
+    max-width: $md
+    margin: 0
+    padding: 0
+    text-align: center
+    z-index: 1
+
+    @include mobile
+      padding: 0 20px
+
+  &__text
+    width: 100%
+    max-width: 520px
+    margin: -30px 0 30px
+    font-size: 16px
+    font-weight: 300
+    line-height: 22px
+    text-align: center
+    position: relative
+
+  &__form
+    margin-top: 45px
+    display: flex
+    flex-direction: column
+    align-items: center
+
+  &__form-submit
+    margin-top: 20px
+    margin-bottom: 110px
+
+  &__group
+    width: 100%
+    margin: 25px 0
+    padding:  0
+    border: 0 none
+
+  &__group-header
+    text-align: center
+
+  &__group-icon
+    width: 47px
+    height: 47px
+
+  &__group-title
+    width: 100%
+    margin: 20px 0
+    font-size: 30px
+    font-weight: 300
+    text-align: center
+
+  &__group-content
+    display: flex
+    flex-direction: column
+    align-items: center
+    padding: 30px 0
+
+  &__skills
+    width: 100%
+    display: flex
+    flex-wrap: wrap
+
+  &__skills-item
+    width: calc(100% / 3)
+    margin: 8px 0
+    transition: $transition-duration
+
+    @include smallscreen
+      width: 50%
+
+    @include extra-smallscreen
+      width: 100%
+
+  &__range-slider
+    width: 100%

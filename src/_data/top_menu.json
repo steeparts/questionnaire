@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Личная информация",
+    "href": "#info-group"
+  },
+  {
+    "title": "Опыт",
+    "href": "#experience-group"
+  },
+  {
+    "title": "JavaScript",
+    "href": "#js-group"
+  },
+  {
+    "title": "О себе",
+    "href": "#about-group"
+  }
+]

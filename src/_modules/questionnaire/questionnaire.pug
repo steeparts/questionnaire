@@ -1,0 +1,79 @@
+include ../../_partials/button/button
+include ../../_partials/checkbox/checkbox
+include ../../_partials/input/input
+include ../../_partials/range-slider/range-slider
+include ../../_partials/select/select
+include ../../_partials/textarea/textarea
+
+mixin questionnaire-info-group()
+  fieldset.questionnaire__group#info-group
+    .questionnaire__group-header
+      img.questionnaire__group-icon(
+        src='images/icons/info.svg',
+        alt='Личная информация'
+      )
+      legend.questionnaire__group-title Личная информация
+    .questionnaire__group-content
+      +input({'placeholder': 'ФИО'})(name='fullname', type='text')
+      +select(name='birthyear')
+        option(value='-', selected, disabled) Год рождения
+        - maxYear = (new Date()).getFullYear()
+        - minYear = 1900
+        - year = maxYear
+        while year >= minYear
+          option(value= year)= year--
+      +input({'placeholder': 'Место проживания'})(name='address', type='text')
+      +input({'placeholder': 'Телефон'})(name='phone', type='text')
+      +input({'placeholder': 'E-mail'})(name='email', type='text')
+
+mixin questionnaire-experience-group()
+  fieldset.questionnaire__group#experience-group
+    .questionnaire__group-header
+      img.questionnaire__group-icon(
+        src='images/icons/experience.svg',
+        alt='Расскажите о своем опыте'
+      )
+      legend.questionnaire__group-title Расскажите о своем опыте
+    .questionnaire__group-content
+      .questionnaire__skills
+        each skill in site.data.skills
+          .questionnaire__skills-item
+            +checkbox({'value': skill})(name='skills[]')
+
+mixin questionnaire-js-group()
+  fieldset.questionnaire__group#js-group
+    .questionnaire__group-header
+      img.questionnaire__group-icon(
+        src='images/icons/js.svg',
+        alt='Уровень владения JavaScript'
+      )
+      legend.questionnaire__group-title Уровень владения JavaScript
+    .questionnaire__group-content
+      .questionnaire__range-slider
+        +range-slider(name='level', min='0', max='4', value='2', step='1')
+
+mixin questionnaire-about-group()
+  fieldset.questionnaire__group#about-group
+    .questionnaire__group-header
+      img.questionnaire__group-icon(
+        src='images/icons/about.svg',
+        alt='Расскажите о себе'
+      )
+      legend.questionnaire__group-title Расскажите о себе
+    .questionnaire__group-content
+      .questionnaire__text.
+        Напишите несколько предложений, чем привлекла наша вакансия и что Вы ожидаете от работы у нас.
+      +textarea({'placeholder': 'Понравилась тем, что...'})(name='about_vacancy')
+
+mixin questionnaire()
+  .questionnaire&attributes(attributes)
+    .questionnaire__header
+      h2.questionnaire__title Анкета
+    .container
+      form.questionnaire__form(action='', method='post')
+        +questionnaire-info-group
+        +questionnaire-experience-group
+        +questionnaire-js-group
+        +questionnaire-about-group
+        .questionnaire__form-submit
+          +button({'value': 'Готово'})(name='submit').button--submit

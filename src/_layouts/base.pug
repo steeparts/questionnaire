@@ -1,0 +1,34 @@
+//- Custom Configuration
+block config
+  - var baseUrl = config.baseUrl || './'
+  - var robotoFont = 'https://fonts.googleapis.com/css?family=Roboto:100,300,400&display=swap&subset=cyrillic'
+
+include ../_modules/header/header
+
+doctype html
+<html class='no-js' lang='ru'>
+
+head
+  meta(charset='utf-8')
+  meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+  title Questionnaire
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  block stylesheets
+    link(rel='stylesheet', href= robotoFont)
+    link(rel='stylesheet', href= baseUrl + `styles/main.css?v=${Date.now()}`)
+
+body.no-scroll
+  .wrapper
+    block header
+      +header
+
+    block content
+
+  .preloader.preloader--active#preloader
+    .preloader__container
+      img(src='images/preloader.gif', alt='Questionnaire').preloader__image
+
+  block scripts
+    script(src= baseUrl + `scripts/main.js?v=${Date.now()}`)
+
+</html>

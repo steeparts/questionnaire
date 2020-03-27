@@ -1,0 +1,7 @@
+mixin checkbox(options)
+  - options = options || {}
+
+  .checkbox
+    label.checkbox__label
+      input.checkbox__field(type='checkbox', value= options.value)&attributes(attributes)
+      span.checkbox__value= options.value

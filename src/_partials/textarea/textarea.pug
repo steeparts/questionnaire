@@ -1,0 +1,6 @@
+mixin textarea(options)
+  - options = options || {}
+
+  .textarea
+    textarea.textarea__field&attributes(attributes)
+    span.textarea__placeholder= options.placeholder

@@ -1,0 +1,121 @@
+// top-menu styles
+.top-menu
+  height: 100%
+
+  @include mobile
+    display: flex
+    justify-content: flex-end
+    align-items: center
+    height: auto
+    position: fixed
+    top: 20px
+    right: 20px
+    z-index: 5
+
+  &__burger
+    @include desktop
+      display: none
+
+    @include mobile
+      display: block
+      position: relative
+      width: 47px
+      height: 47px
+      cursor: pointer
+      background-color: $accent-color
+      border-radius: 50%
+      box-shadow: 0 2px 3px rgba(0, 0, 0, .35)
+      transition: $transition-duration
+
+      &::before, &::after
+        content: ''
+        position: absolute
+        top: 18px
+        right: 14px
+        left: 14px
+        height: 1px
+        background-color: white
+        border-radius: 2px
+        transition: $transition-duration
+
+      &::after
+        top: auto
+        bottom: 18px
+
+      &--active
+        background-color: transparent
+        box-shadow: none
+        z-index: 1
+
+        &::before, &::after
+          background-color: $accent-color
+
+        &::before
+          top: 23px
+          transform: rotate(135deg)
+
+        &::after
+          bottom: 23px
+          transform: rotate(-135deg)
+
+        + .top-menu__list
+          opacity: 1
+          visibility: visible
+          transform: translateY(0)
+
+  &__list
+    display: flex
+
+    @include desktop
+      justify-content: center
+      height: 100%
+
+    @include mobile
+      position: fixed
+      background-color: white
+      top: 0
+      right: 0
+      bottom: 0
+      left: 0
+      flex-direction: column
+      padding: 80px 0
+      opacity: 0
+      visibility: hidden
+      overflow: auto
+      transition: $transition-duration
+      transform: translateY(-10%)
+
+  &__item
+    display: flex
+    align-items: center
+
+    @include desktop
+      height: 100%
+
+      &:not(:last-child)
+        margin-right: 75px
+
+    @include mobile
+      padding: 15px 20px
+
+      &:not(:last-child)
+        border-bottom: 1px solid $dull-color
+
+    &--active .top-menu__link
+      color: $active-menu-color
+
+  &__link
+    font-size: 14px
+    font-weight: 300
+    line-height: 16px
+    color: $accent-color
+    transition: $transition-duration
+
+    &:hover
+      opacity: .8
+
+    @include mobile
+      width: 100%
+      font-size: 20px
+      line-height: normal
+      padding-right: 60px

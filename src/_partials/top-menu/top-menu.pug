@@ -1,0 +1,7 @@
+mixin top-menu()
+  nav.top-menu(role='navigation')&attributes(attributes)
+    .top-menu__burger
+    ul.top-menu__list
+      each link in site.data.top_menu
+        li.top-menu__item
+          a(href= link.href).top-menu__link= link.title

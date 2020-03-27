@@ -1,0 +1,79 @@
+*,
+*::before,
+*::after
+  box-sizing: border-box
+  outline: none
+
+html, body
+  height: 100%
+
+html
+  -webkit-tap-highlight-color: transparent
+
+body
+  min-width: 320px
+  font-family: $primary-font
+  background-color: #ffffff
+  color: $primary-color
+a
+  text-decoration: none
+
+ul
+  list-style: none
+  padding: 0
+  margin: 0
+
+.hidden
+  display: none !important
+
+.no-scroll
+  overflow: hidden
+
+.preloader
+  display: none
+  justify-content: center
+  align-items: center
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background: $dull-color
+  z-index: 100
+
+  &--hidden
+    opacity: 0
+    visibility: hidden
+    -webkit-transition: visibility 0.2s linear, opacity 0.2s linear
+    -moz-transition: visibility 0.2s linear, opacity 0.2s linear
+    -o-transition: visibility 0.2s linear, opacity 0.2s linear
+
+  &--active
+    display: flex
+
+  &__container
+    position: absolute
+    display: flex
+    align-items: center
+    justify-content: center
+
+  &__image
+    width: 280px
+
+.wrapper
+  display: flex
+  flex-direction: column
+  min-height: 100%
+  width: 100%
+  position: relative
+  overflow: hidden
+
+.content
+  flex: 1 0 auto
+
+.container
+  width: 100%
+  max-width: $md + 40
+  height: 100%
+  margin: auto
+  padding: 0 20px
